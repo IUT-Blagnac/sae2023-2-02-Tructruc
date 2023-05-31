@@ -1,4 +1,5 @@
 import requests
+import sys
 
 def get_random_words(num):
     url = f"https://random-word-api.herokuapp.com/word?number={num}"
@@ -9,7 +10,13 @@ def get_random_words(num):
     else:
         return None
 
-num_words = 1000
+
+if len(sys.argv) > 1:
+    num_words = sys.argv[1]
+
+else:
+    num_words = 1000
+
 words = get_random_words(num_words)
 
 if words:
