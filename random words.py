@@ -1,6 +1,7 @@
 import requests
 import sys
 
+
 def get_random_words(num):
     url = f"https://random-word-api.herokuapp.com/word?number={num}"
     response = requests.get(url)
