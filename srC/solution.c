@@ -30,15 +30,28 @@ void destroyArrayList(ArrayList* arrayList) {
     free(arrayList);
 }
 
-
-void split(ArrayList* arrayList, const char* string, const char* delimiter) {
-    char* stringCopy = strdup(string);
-    char* token = strtok(stringCopy, delimiter);
-    while (token != NULL) {
-        addString(arrayList, token);
-        token = strtok(NULL, delimiter);
+void split(ArrayList* arrayList, const char* string) {
+    int start = 0;
+    int end = 0;
+    int length = strlen(string);
+    while (end < length) {
+        if ((string[end] < 'a' || string[end] > 'z') && (string[end] < 'A' || string[end] > 'Z')) { // si le caractère n'est pas une lettre
+            if (end - start > 0) { // empèche les mots vides
+                char* word = (char*)malloc((end - start + 1) * sizeof(char));
+                strncpy(word, string + start, end - start); // copie le mot dans word, string + start est l'adresse du premier caractère du mot (on avance dans la chaine de caractère) et end - start est la longueur du mot
+                word[end - start] = '\0'; // ajoute le caractère de fin de chaine
+                addString(arrayList, word); // ajoute le mot à la liste
+            }
+            start = end + 1;
+        }
+        end++;
     }
-    free(stringCopy);
+    if (end - start > 0) {
+        char* word = (char*)malloc((end - start + 1) * sizeof(char));
+        strncpy(word, string + start, end - start);
+        word[end - start] = '\0';
+        addString(arrayList, word);
+    }
 }
 
 
@@ -47,10 +60,12 @@ void solution(char** output, int tailleOutput, char* input, char* ordre, int tai
 
     ArrayList* splitedInput = (ArrayList*)malloc(sizeof(ArrayList));
 
-    split(splitedInput, input, " ");
+    split(splitedInput, input);
 
 
     ArrayList* notFound = (ArrayList*)malloc(sizeof(ArrayList));
+    notFound->array = NULL;
+    notFound->size = 0;
     int found;
     for(int i = 0; i < splitedInput->size; i++) {
         found = 0;
