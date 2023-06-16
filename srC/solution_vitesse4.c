@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 /**
  * Prétraite l'ordre pour éviter de faire une boucle à chaque fois
@@ -22,9 +23,9 @@ int* preprocessOrdre(char* ordre, int tailleOrdre){
 
 void solution(char** output, int tailleOutput, char* input, char* ordre, int tailleOrdre) {
     // Initialisation de la liste de listes de mots
-    char*** arrayLists = (char***)malloc((tailleOrdre + 1) * sizeof(char**));
+    int** arrayLists = (int**)malloc((tailleOrdre + 1) * sizeof(int*));
     for (int i = 0; i < tailleOrdre + 1; i++) {
-        arrayLists[i] = (char**)malloc(sizeof(char*)*tailleOutput);
+        arrayLists[i] = (int*)malloc(sizeof(int)*tailleOutput*2);
     }
     int* word_count = (int*)calloc((tailleOrdre + 1), sizeof(int)); // Nombre de mots par liste
 
@@ -40,17 +41,11 @@ void solution(char** output, int tailleOutput, char* input, char* ordre, int tai
         // si le caractère n'est pas une lettre
          if ((input[end] < 'a' || input[end] > 'z') && (input[end] < 'A' || input[end] > 'Z') && (input[end] < '0' || input[end] > '9')) {
             if (end - start > 0) { // empèche les mots vides
-                char* word = (char*)malloc((end - start + 1) * sizeof(char));
-
-                // copie le mot dans word, string + start est l'adresse du premier caractère du mot (on avance dans la chaine de caractère) et end - start est la longueur du mot
-                strncpy(word, input + start, end - start);
-
-                // ajoute le caractère de fin de chaine
-                word[end - start] = '\0';
 
                 // ajoute le mot à la liste correspondante
-                arrayLists[ordrePreprocessed[word[0]]][word_count[ordrePreprocessed[word[0]]]] = word;
-                word_count[ordrePreprocessed[word[0]]]++;
+                arrayLists[ordrePreprocessed[input[start]]][word_count[ordrePreprocessed[input[start]]]*2] = start; // ajoute l'adresse du premier caractère du mot à la liste
+                arrayLists[ordrePreprocessed[input[start]]][word_count[ordrePreprocessed[input[start]]]*2+1] = end ; // ajoute la longueur du mot à la liste
+                word_count[ordrePreprocessed[input[start]]]++;
             }
             start = end + 1;
         }
@@ -58,25 +53,21 @@ void solution(char** output, int tailleOutput, char* input, char* ordre, int tai
     }
     // ajoute le dernier mot (si il n’est pas vide)
     if (end - start > 0) {
-        char* word = (char*)malloc((end - start + 1) * sizeof(char));
-
-        // copie le mot dans word, string + start est l'adresse du premier caractère du mot (on avance dans la chaine de caractère) et end - start est la longueur du mot
-        strncpy(word, input + start, end - start);
-
-        // ajoute le caractère de fin de chaine
-        word[end - start] = '\0';
-
-        // ajoute le mot à la liste correspondante
-        arrayLists[ordrePreprocessed[word[0]]][word_count[ordrePreprocessed[word[0]]]] = word; // ajoute le mot à la liste
-        word_count[ordrePreprocessed[word[0]]]++;
+        arrayLists[ordrePreprocessed[input[start]]][word_count[ordrePreprocessed[input[start]]]*2] = start; // ajoute l'adresse du premier caractère du mot à la liste
+        arrayLists[ordrePreprocessed[input[start]]][word_count[ordrePreprocessed[input[start]]]*2+1] = end ; // ajoute la longueur du mot à la liste
+        word_count[ordrePreprocessed[input[start]]]++;
     }
 
     // Ajoute les mots dans l'ordre dans le tableau de sortie
     int index = 0;
     for (int i = 0; i < tailleOrdre + 1; i++) {
         for (int j = 0; j < word_count[i]; j++) {
+            output[index] = (char*)malloc(sizeof(char)*(arrayLists[i][j*2+1] - arrayLists[i][j*2] +1));
 
-            output[index] = arrayLists[i][j];
+            strncpy(output[index], input + arrayLists[i][j*2], arrayLists[i][j*2+1] - arrayLists[i][j*2]);
+
+            output[index][arrayLists[i][j*2+1] - arrayLists[i][j*2]] = '\0';
+
             index++;
         }
     }

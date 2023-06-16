@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "solution.h"
+#include "2-efficacite-meilleur.h"
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,7 +41,12 @@ int main(int argc, char *argv[]) {
     char* expected2[] = {"fait", "Il", "aujourd", "aout", "beau", "hui","comme", "en", ""};
     for (int i=0; i<nbMots-1;i++) {
         if (strcmp(result2[i], expected2[i]) != 0) {
+
             printf("\033[31mErreur: %s != %s\n\033[0m", result2[i], expected2[i]);
+            for (int j=0; j<nbMots-1;j++) {
+                printf("%s ", result2[j]);
+            }
+            printf("\n");
             return 1;
         }
     }
