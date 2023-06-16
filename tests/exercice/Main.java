@@ -4,6 +4,21 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+	
+        var gcBeans = ManagementFactory.getGarbageCollectorMXBeans();
+
+        gcBeans.stream().forEach(gc -> {
+
+            out.println(format("GC Name : %s", gc.getName()));
+            var poolNames = gc.getMemoryPoolNames();
+            if (poolNames != null) {
+                List.of(poolNames).forEach(pool ->
+                        out.println(format("Pool name %s", pool)));
+            } else {
+                out.println("No memory pools for " + gc.getName());
+            }
+
+        };
 
         List<String> expected1 = List.of("666", "the", "the", "number", "of", "beast");
         try {
