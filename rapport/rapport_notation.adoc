@@ -1,0 +1,445 @@
+= Rapport notation SAE 2.02
+:toc-title: Table des matières
+:toclevels: 3
+:sectnumlevels: 3
+:toc:
+:title-page:
+:sectnums:
+:title-logo-image: image:/Logo_IUT_Blagnac.png[]
+:stem: asciimath
+Emilien FIEU 3B
+
+== Efficacite
+
+=== Meilleur
+
+====  Programme n°5
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util| Oui
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|Oui
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 9
+
+===== Commentaires
+
+Ce programme passe certains tests sauf pour le test avec les nombres, il génère une StringIndexOutOfBoundsException. Il y a aussi un problème avec le fait qu’il utilise des méthodes de Java.util comme "split" alors que ce programme concourt dans la catégorie Efficacité
+
+
+==== Programme n°2
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+= |Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|Oui
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 10
+
+===== Commentaires
+
+Ce programme ne passe pas les tests fournis initialement, il ne renvoie pas tout les mots qui ne commencent pas par une lettre de l’ordre, à la fin de la liste.
+
+=== Pire
+
+==== Programme n°64
+
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|Oui
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|Oui
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 9
+
+===== Commentaires
+
+Ce programme ne respecte pas la nomenclature et ne passe pas les tests fournis initialement, en effet la virgule suvi d’un espace génère un mot vide. Et il ne splite pas avec les apostrophes.
+
+
+==== Programme n°10
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|Oui
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 10
+
+===== Commentaires
+
+Ce programme ne passe pas les tests fournis initialement, il ne prend pas les nombres comme des caractères de mots. Son programme renvoie une liste vide dans le test du README.
+
+== Simplicité
+
+=== Meilleur
+
+==== Programme n°21
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|Oui
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|Oui
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 17
+
+===== Commentaires
+Ce programme ne respecte pas la nomenclature et ne passe pas les tests fournis initialement, mais il ne passe pas les tests supplémentaires.
+
+
+==== Programme n°17
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|Oui
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 20
+
+Il passe les tests initaux et les tests supplémentaires
+
+==== Programme n°28
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|Oui
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 10
+
+===== Commentaires
+
+Ce programme ne passe pas les tests fournis initialement, il renvoi une chaine vide lorsqu’il y a une virgule suivi d’un espace, il ne splite pas avec les caractères spéciaux.
+
+=== Pire
+
+==== Programme n°32
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |Oui
+
+|Ne corresponds pas à une classe Exercice|Oui
+
+|Ne respecte pas la nomenclature|Oui
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|Oui
+|===
+
+[discrete]
+== NOTE : 1
+
+===== Commentaires
+
+Ce programme n’est pas une classe Exercice, il ne compile pas et ne respecte pas la nomenclature.
+
+==== Programme n°23
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|Oui
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|Oui
+|===
+
+[discrete]
+== NOTE : 4
+
+===== Commentaires
+
+Ce programme ne respecte pas la nomenclature et ne revoye pas le bon type de donnée, il renvoie une String au lieu d’une liste de String.
+
+== Sobriété
+
+=== Meilleur
+
+==== Programme n°52
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|Oui
+|===
+
+[discrete]
+== NOTE : 5
+
+===== Commentaires
+
+La fonction de tri du programme provoque une ArrayIndexOutOfBoundsException, il ne fonctionne donc pas
+
+==== Programme n°23
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|Oui
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|Oui
+|===
+
+[discrete]
+== NOTE : 4
+
+===== Commentaires
+
+Ce programme ne respecte pas la nomenclature et ne revoye pas le bon type de donnée, il renvoie une String au lieu d’une liste de String.
+
+=== Pire
+
+==== Programme n°15
+
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|
+
+|Passe les tests fournis initialement et les tests supplémentaires|Oui
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 20
+
+===== Commentaires
+
+Ce programme fonctionne parfaitement bien.
+
+==== Programme n°43
+
+Grille de notation
+|===
+|Problème |
+
+|Ne compile pas |
+
+|Ne corresponds pas à une classe Exercice|
+
+|Ne respecte pas la nomenclature|Oui
+
+|Ne respecte pas l’anonymat|
+
+|Ne respecte pas les contraintes Java.util|
+
+|Passe tout les test fournis initialement|Oui
+
+|Passe les tests fournis initialement et les tests supplémentaires|
+
+|Fonctionne mais ne passe pas les tests fournis initialement|
+
+|Ne fonctionne pas|
+|===
+
+[discrete]
+== NOTE : 17
+
+===== Commentaires
+
+Le programme ne respecte pas la nomenclature et passe pas les tests initiaux.

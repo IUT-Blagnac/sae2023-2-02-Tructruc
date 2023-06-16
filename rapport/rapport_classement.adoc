@@ -1,0 +1,162 @@
+= Rapport classement SAE 2.02
+:toc-title: Table des matières
+:toclevels: 3
+:sectnumlevels: 3
+:toc:
+:title-page:
+:sectnums:
+:title-logo-image: image:/Logo_IUT_Blagnac.png[]
+:stem: asciimath
+Emilien FIEU 3B
+
+== Critères de comparaison
+
+=== Simplicité
+
+**Chaque critère est noté sur 5 et la somme permet d’obtenir une note pour classer les algorithmes**
+
+* Lisibilité
+** Lisibilité globale du code, le code est facile à lire et à comprendre
+* Nommage des variables/fonctions
+** Les variables et fonctions sont nommées de manière à ce que l’on comprenne facilement leur utilité
+* Commentaires
+** Les commentaires sont présents et permettent de comprendre le code
+* Complexité
+** Le code est simple et compréhensible
+* Modularité
+** Le code est découpé en plusieurs fonctions
+* Note codacy
+** La note codacy (A à F) donne une idée de la qualité du code (ce critère compte pour 6 points)
+
+
+=== Efficacité
+
+Ici, nous executerons les algorithmes avec un même jeu de données, et nous comparerons le temps d'execution de chacun d'entre eux. Nous utiliserons 3 jeus de données différents, un avec 10 mots, un avec 100 mots, un avec 1000 mots et un avec 2000 mots. Cela nous permettra de voir la complexité de chaque algorithme. Le classement se fera en fonction du temps d'execution, le plus rapide sera le mieux noté.
+
+Nous utiliserons les données suivantes : link:https://pastes.io/zbrjqczabx[Dataset]
+Nous utiliserons l’ordre suivant : `'r', 'e', 't', 'l', 'u', 'm', 'o', 'p', 'a', 'n', 'i', 'g', 's', 'c', 'd'`
+
+=== Sobriété numérique
+
+Chaque critère sera noté sur 5 et la somme permettra d’obtenir une note pour classer les algorithmes
+
+* Utilisation de la mémoire
+** L’algorithme utilise-t-il la memoire de manière raisonable ?
+* Utilisation de la puissance de calcul
+** L’algorithme utilise-t-il la puissance de calcul de manière raisonable ?
+
+
+== Classements
+
+=== Efficacité
+
+==== Meilleur
+
+===== Données
+
+
+|===
+|N°Algo |10 mots |100 mots |1000 mots |2000 mots |Complexité |Remarques
+
+|5 |290474ns |1353405 |14509400 |46674039 |O(n) |Disqualifié car utilise des fonctions Java.util
+
+|2 |2000 |11000 |91000 |182000 |O(n) |Cet algorithme est très rapide mais il pourrait encore etre optimisé en utilisant n’utilisant pas de pile mais une liste de taille maximale (c’est que j’ai fait dans mon algo et cela va plus vite)
+|===
+
+===== Résultat
+
+. Algo 2
+. Algo 5 (disqualifié)
+
+==== Pire
+
+===== Données
+
+|===
+|N°Algo |10 mots |100 mots |1000 mots |2000 mots |Complexité |Remarques
+
+|10 |80878|859901|6555067|12471285| O(n) | Cet algo malgrès sa complexité de O(n) est plus rapide
+|64 |305142 |2013489 | 18835543| 28470594| O(nlog(n)) | Une complexité de O(nlog(n)) est plutôt optimisée pour un algo censé être le moins efficace, mais il reste moins efficace que les autres
+
+|===
+
+===== Résultat
+
+. Algo 64
+. Algo 10
+
+=== Simplicité
+
+==== Meilleur
+
+===== Données
+
+|===
+|N°Algo |Lisibilité |Nommage |Commentaires |Complexité |Modularité |Codacy |Remarques
+
+|21 |4 |5 |0 |4 |2 |A | L’algorithme est assez simple, mais il n’est pas commenté, ici la modularité n’apporterait rien
+
+|17 |2 |4 |0 |3 |4 |B | L’algorithme est assez complex à comprendre et pas commenté, mais il est modulaire
+
+| 28 | 3 | 4 | 0 | 4 | 2 | Nan |L’algorithme est moyenement complexe, mais il n’est pas commenté, ici la modularité n’apporterait rien. (Codacy refuse d’analyser le code, la note sera considéré comme un B)
+
+|===
+
+===== Résultat
+
+. Algo 21 (21pts)
+. Algos 17 et 28 (18pts)
+
+==== Pire
+
+===== Données
+
+|===
+
+|N°Algo |Lisibilité |Nommage |Commentaires |Complexité |Modularité |Codacy |Remarques
+
+|32 | 1 | 4| 0 | 0| 0 | D| Disqualifié car le programme ne compile pas
+|23 | 3 | 3 | 0 | 2 | 0 | C | L’algorithme est plutot lisible et simple, la seule chose qui pourrait justifier sa présence dans ce classement est le fait qu’il n’y ait aucun saut de ligne
+
+|===
+
+===== Résultat
+
+. Algo 23 (11pts)
+. Algo 32 (Disqualifié)
+
+=== Sobriété numérique
+
+==== Meilleur
+
+===== Données
+
+|===
+|N°Algo |Mémoire |Puissance de calcul |Remarques
+| 52 | 4 | 4 | L’algorithme moyen, il est assez raisonnable mais il aurait pu être plus optimisé notamment en utilisant un algo de tri plus économique en ressources que celui par défault. Il utilise des ArrayLists, ce qui est assez lourd en mémoire
+
+| 23 | 4 | 3 | L’algorithme est assez lourd en mémoire, mais il est très peu gourmand en puissance de calcul. Il utilise deux boucles for each, ce qui est assez lourd en mémoire car il stocke les données dans des variables temporaires. Une boucle for i aurait été plus optimisée
+|===
+
+===== Résultat
+
+. Algo 52 (8pts)
+. Algo 23 (7pts)
+
+==== Pire
+
+===== Données
+
+|===
+|N°Algo |Mémoire |Puissance de calcul |Remarques
+
+| 15 | 2 | 2 | L’algorithme est moyennent gourmand en mémoire et en puissance de calcul. Il utilise plusieurs fonctions assez longue, mais il n’est pas non plus énormément gourmand en ressources
+
+| 43 | 3 | 3 | L’algorithme est un peut mois gourmand car il n’utilise pas d’autres fonctions que celles de base, mais il utilise des ArrayLists, ce qui est assez lourd en mémoire
+
+|===
+
+===== Résultat
+
+. Algo 15 (4pts)
+. Algo 43 (3pts)

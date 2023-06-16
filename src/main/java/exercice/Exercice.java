@@ -4,41 +4,89 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exercice {
-    public static List<String> solution(String str, List<Character> ordre) {
-        // Contient le texte splité en mots
-        String[] splited = str.split("[^a-zA-Z0-9]+");
+    public static List<String> solution(String texte, List<Character> ordre) {
+        List<String> motsTries = new ArrayList<>();
+        List<String> motsSansOrdre = new ArrayList<>();
+        String[] mots = texte.split(" ");
 
-        // Liste qui va contenir le résultat
-        List<String> result = new ArrayList<>();
-
-        // Tableau d’array list de string qui va permettre de stocker les mots dans le bon ordre
-        ArrayList<String>[] tab = new ArrayList[ordre.size()+1];
-        // Initialise les array lists
-        for (int i = 0; i < tab.length; i++) {
-            tab[i] = new ArrayList<>();
-        }
-
-        // Liste des mots qui ne commencent pas par un caractère de l’ordre
-        List<String> notfound = new ArrayList<>();
-        for (String s : splited) {
-            // vérifie si la première lettre du mot est dans l’ordre, si oui, on l’ajoute a la liste correspondante
-            // Si il n’y est pas, on l’ajoute a la liste des mots qui ne sont pas ordonné
-            if (ordre.contains(s.charAt(0))){
-                tab[ordre.indexOf(s.charAt(0))].add(s);
-            }else{
-                notfound.add(s);
+        for (String mot : mots) {
+            if (aOrdre(mot, ordre)) {
+                ajouterMot(motsTries, mot, ordre);
+            } else {
+                motsSansOrdre.add(mot);
             }
         }
 
-        // Ajoute le contenu des listes a la liste de sortie
-        for (ArrayList<String> list : tab) {
-            result.addAll(list);
+        motsTries.addAll(motsSansOrdre);
+        trierMots(motsTries, ordre);
+        return motsTries;
+    }
+
+    private static boolean aOrdre(String mot, List<Character> ordre) {
+        for (char c : mot.toCharArray()) {
+            if (!ordre.contains(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void ajouterMot(List<String> motsTries, String mot, List<Character> ordre) {
+        int index = 0;
+        for (int i = 0; i < motsTries.size(); i++) {
+            if (comparerMots(mot, motsTries.get(i), ordre) < 0) {
+                index = i;
+                break;
+            }
+        }
+        motsTries.add(index, mot);
+    }
+
+    private static int comparerMots(String mot1, String mot2, List<Character> ordre) {
+        int longueur1 = mot1.length();
+        int longueur2 = mot2.length();
+        int longueurMin = Math.min(longueur1, longueur2);
+
+        for (int i = 0; i < longueurMin; i++) {
+            char char1 = mot1.charAt(i);
+            char char2 = mot2.charAt(i);
+            int index1 = getIndex(ordre, char1);
+            int index2 = getIndex(ordre, char2);
+
+            if (index1 != -1 && index2 != -1) {
+                if (index1 != index2) {
+                    return index1 - index2;
+                }
+            } else if (index1 == -1 && index2 == -1) {
+                continue;
+            } else if (index1 == -1) {
+                return 1;
+            } else if (index2 == -1) {
+                return -1;
+            }
         }
 
-        // ajoute la liste des mots inconnu a la liste de sortie
-        result.addAll(notfound);
+        return longueur1 - longueur2;
+    }
 
-        // retourne la liste de sortie
-        return result;
+    private static int getIndex(List<Character> liste, char c) {
+        for (int i = 0; i < liste.size(); i++) {
+            if (liste.get(i).equals(c)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private static void trierMots(List<String> motsTries, List<Character> ordre) {
+        for (int i = 1; i < motsTries.size(); i++) {
+            String mot = motsTries.get(i);
+            int j = i - 1;
+            while (j >= 0 && comparerMots(motsTries.get(j), mot, ordre) > 0) {
+                motsTries.set(j + 1, motsTries.get(j));
+                j--;
+            }
+            motsTries.set(j + 1, mot);
+        }
     }
 }
