@@ -175,10 +175,15 @@ Vous utiliserez le dépôt initial qui vous aura été attribué via classroom p
 
 [options="header"]
 |==========================================================================
-| #    | lien                                                     | langage  | catégorie  |  Type
-| 1    | link:src/main/java/exercice/Exercice1.java[meilleur java]| Java     | Simplicité | Meilleur
-| 2    | link:src/main/java/exercice/Exercice2.java[pire java]    | Java     | Efficacité | Pire
-| ...  | ...                                                      | ...      | ...      
+| #    | lien                                                         | langage  | catégorie  |  Type
+| 1    | link:src/main/java/exercice/simple_pire.java[simplicite pire]| Java     | Simplicité | Pire
+| 2    | link:src/main/java/exercice/Exercice.java[efficacite pire]   | Java     | Efficacité | Pire
+|      | \|\|                                                         | \|\|     | Sobriété   | Pire
+|      | \|\|                                                         | \|\|     | Simplicité | Meilleur
+| 3    | link:srC/solution_vitesse4.c[efficacite meilleur]            | C        | Efficacité | Meilleur
+|      | \|\|                                                         | \|\|     | Sobriété   | Meilleur
+| 4    | link:srC/solution_vitesse_correct.c[efficacite meilleur]     | C        | Efficacité | Meilleur
+|      | \|\|                                                         | \|\|     | Simplicité | Pire
 |==========================================================================
 
 === Phase 2 (deadline : **vendredi 16 juin 2023** à minuit)
@@ -194,20 +199,25 @@ WARNING: Les répertoires et fichiers existants devront être complétés et mis
 
 Voici les pré-requis pour exécuter nos codes d'évaluation.
 
-- Java v.x.y.z
-- ...
+- Java 18
+- gcc
 
 === Reproductibilité
 
 - Pour reproduire nos analyses :
-. Installez X
-. Lancez Y
-. ...
+. Ajoutez l’algorithme que vous voulez évaluer dans le dossier link:analyse[] en le nomant `Exercice.java`
+. Compilez le tout avec `javac analyse/Main.java`
+. Lancez le programme avec `java analyse/Main`
+- Pour les algorithmes en C (sous Linux) :
+. Ajoutez l’algorithme que vous voulez évaluer dans le dossier link:analyse[] en les nonmant `exercice.c` et `exercice.h`
+. Compilez le tout avec `gcc analyse/test.c analyse/exercice.c analyse/exercice.h`
+. Lancez le programme avec `./a.out`
+- Conseils :
+. Pour avoir des résultats plus consistants sur votre pc portable pour les tests de vitesse, je vous conseille de brancher votre pc afin que la fréquence de votre processeur soit plus constante
 
 === Références
 
-- link:http://xyz[Mon super outil XYZ]
-- ...
+-  
 
 == Généralités, notation de la SAÉ et résultat du concours
 
